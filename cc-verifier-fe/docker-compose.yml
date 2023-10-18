@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  proxy:
+    container_name: proxy-fe
+    image: nginx:alpine
+    ports:
+      - "81:81"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    restart: "unless-stopped"
+    networks:
+      - backend
+
+  server:
+    container_name: frontend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    restart: "unless-stopped"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
