@@ -8,7 +8,7 @@ To run this command make sure docker is installed in your system. follow this li
 
 - switch to directory cc-verification, id not already
 - `docker-compose up --build`
-- open [localhost](http://localhost:5173/)
+- open [localhost:5173](http://localhost:5173/)
 - signup , add any email and password
 - use same to login
 - click on add card
